@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Warzywniak 24H</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+
+<div th:marginwidth="100px">
+
+<h3>Witaj w naszym warzywniaku!</h3></br>
+<h5> Dodaj do koszyka wybrane produkty</h5><br/>
+
+
+<span th:each="prod: ${products}">
+<div>
+    <form action="/add" method="post">
+    <h3 th:text="${prod.name}"></h3><br/>
+    <h5 th:text="'Cena ' + ${prod.price} +' zł'"></h5><br>
+    <img th:src="${prod.imageUrl}" th:width="300px" th:high="300px"/><br/>
+    <input th:type="text"  th:name="amount"/>
+    <input th:type="hidden"  th:name="name" th:value="${prod.name}"/>
+    <!--dodac field do okna, chyba-->
+        <input type="submit" value="Dodaj"/></form>
+<br/>
+</div>
+
+</span>
+</div>
+
+
+</ul>
+</body>
+</html>
